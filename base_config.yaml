@@ -1,0 +1,31 @@
+# python train.py <config_file_path> <random_seed>
+# Example : python3 train.py config/example.yaml 123
+    
+exp_name: 'DQN_base'
+
+# GPU Acceleration
+USE_GPU : False
+
+# EXPLORATION POLICY
+EPSILON_START: 1.0
+EPSILON_FINAL: 0.01
+EPSILON_DECAY: 500
+
+# NEURAL NETWORK PARAMETERS
+HIDDEN_LAYER_WIDTH: 128
+BATCH_SIZE: 32
+
+
+# DRL PARAMETERS
+TIMESTEPS: 10000
+REPLAY_BUFFER_SIZE: 1000
+TARGET_UPDATE_FREQ: 0
+GAMMA: 0.99
+
+# MODEL
+MODEL_NAME: 'DQN'
+OPTIMIZER: 'Adam'
+LEARNING_RATE: 0.1
+CRITERION: 'MSE'
+
+
