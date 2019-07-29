@@ -4,7 +4,7 @@
 exp_name: 'DQN_base'
 
 # GPU Acceleration
-USE_GPU : False
+USE_GPU : True
 
 # EXPLORATION POLICY
 EPSILON_START: 1.0
