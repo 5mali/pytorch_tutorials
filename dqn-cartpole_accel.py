@@ -134,7 +134,7 @@ def compute_td_loss(batch_size):
     
     expected_q_value = reward + gamma * next_q_value * (1 - done)
 
-    loss = criterion(q_value, expected_q_value)
+    loss = criterion(q_value, expected_q_value.detach())
        
     optimizer.zero_grad()
     loss.backward()
