@@ -34,7 +34,7 @@ env_id = "CartPole-v0"
 env = gym.make(env_id)
 env.seed(seed_value);
 
-USE_GPU = not False
+USE_GPU = False
 
 # Use CUDA
 USE_CUDA = torch.cuda.is_available() and USE_GPU
@@ -131,7 +131,8 @@ def compute_td_loss(batch_size):
     next_q_values = model(next_state)
     next_q_value  = next_q_values.max(dim=1)[0]
     
-    expected_q_value = reward + gamma * next_q_value * (1 - done)
+    with torch.no_grad():
+        expected_q_value = reward + gamma * next_q_value * (1 - done)
 
     loss = criterion(q_value, expected_q_value.detach())
        
@@ -145,7 +146,7 @@ if __name__ == '__main__':
     print('torch version: {}'.format(torch.__version__))                                                       
     from_time = time.time()                                                                                         
     # Training BEGINS
-    num_frames = 50_000
+    num_frames = 10_000
     batch_size = 32
     gamma      = 0.9
 
